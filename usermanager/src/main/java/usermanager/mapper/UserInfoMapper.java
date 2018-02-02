@@ -1,10 +1,10 @@
 package usermanager.mapper;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
-
-import usermanager.entity.UserBaseInfo;
+import usermanager.entity.UserLoginInfo;
 
 /**
  * 用户信息的
@@ -25,6 +25,9 @@ public interface UserInfoMapper
      * @return
      * @Description:
      */
-    @Select("SELECT UUID,USERNAME,U_PASSWORD FROM tbl_user_base_info where username = #{userName}")
-    UserBaseInfo getUserBaseInfoByName(@Param("userName")String Name);
+    @Select("SELECT user_id,user_name,user_password FROM tbl_user_base_info where user_name = #{userName}")
+    UserLoginInfo getUserBaseInfoByName(@Param("userName")String Name);
+    
+    @Insert("insert into tbl_user_base_info(user_id,user_name,user_password) values(#{user_id},#{user_name},#{user_password})")
+    public void insertUserInfo(UserLoginInfo user);
 }
