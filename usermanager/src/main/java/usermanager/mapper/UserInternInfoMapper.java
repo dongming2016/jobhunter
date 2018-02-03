@@ -6,13 +6,13 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-public interface UserInternInfo {
+public interface UserInternInfoMapper {
 
 	//增加一条实习经历
 	@Insert("insert into tbl_user_intern_info(intern_id,intern_company_name,intern_position,intern_company_image,intern_start_time," +
 			" intern_stop_time,intern_work_content,user_id valuse(#{intern_id},#{intern_company_name},#{intern_position},#{intern_company_image},"+
 			" #{intern_start_time},#{intern_stop_time},#{intern_work_content},#{user_id})")
-	public void insertUserInternInfo(UserInternInfo userInternInf);
+	public void insertUserInternInfo(UserInternInfoMapper userInternInf);
 	
 	//删除一条实习经历
 	@Delete("delete from tbl_user_intern_info where user_id=#{user_id}")
@@ -21,10 +21,10 @@ public interface UserInternInfo {
 	//修改一条实习经历
 	@Update("update tbl_user_intern_info set intern_company_name=#{intern_company_name},intern_position=#{intern_position},intern_company_image=#{intern_company_image}," +
 			" intern_start_time=#{intern_start_time},intern_stop_time=#{intern_stop_time},intern_work_content=#{intern_work_content} where user_id=#{user_id}")
-	public void updateUserInternInfo(UserInternInfo userInternInf);
+	public void updateUserInternInfo(UserInternInfoMapper userInternInf);
 	
 	//查询一条实习经历
 	@Select("select intern_id,intern_company_name,intern_position,intern_company_image,intern_start_time,intern_stop_time,intern_work_content,user_id from tbl_user_intern_info" +
 			" where usre_id=#{user_id}")
-	public UserInternInfo selectUserInternInfo(@Param("user_id") int id);
+	public UserInternInfoMapper selectUserInternInfo(@Param("user_id") int id);
 }

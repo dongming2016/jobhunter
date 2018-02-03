@@ -1,5 +1,7 @@
 package usermanager.service;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,9 +27,11 @@ import usermanager.entity.UserLoginInfo;
 public class UserLoginService
 {
     private UserLoginValidateImpl userloginvalidate;
-     
+    public static final Logger logger = LogManager.getLogger(UserLoginValidateImpl.class);
+    
     public UserLoginValidateImpl getUserBaseInfo()
     {
+        
         return userloginvalidate;
     }
 
@@ -50,6 +54,8 @@ public class UserLoginService
     
     @RequestMapping(method = RequestMethod.GET, value = "/find")
     public String find() {
+        System.out.println("hello");
+        logger.warn("hello");
     	return "hello!!!";
     }
 
